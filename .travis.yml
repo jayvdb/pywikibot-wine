@@ -62,4 +62,5 @@ install:
 script:
 # Fix numpy ast errors in tests by upgrading numpy
 - export PYSETUP_TEST_NO_WIN32=1
+- export PYWIKIBOT2_NO_USER_CONFIG=1
 - $PYTHON_EXE setup.py test
