@@ -7,7 +7,7 @@ env:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y wine
+  - sudo apt-get install -y wine -qq
   - wget 'http://www.python.org/ftp/python/3.3.5/python-3.3.5.msi'
   - wine msiexec /i python-3.3.5.msi /qn
   - PYTHON_EXE=~/.wine/drive_c/Python33/python.exe
