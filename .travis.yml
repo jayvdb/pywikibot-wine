@@ -61,5 +61,5 @@ install:
 
 script:
 # Fix numpy ast errors in tests by upgrading numpy
-- PYSETUP_TEST_NO_WIN32=1
+- export PYSETUP_TEST_NO_WIN32=1
 - $PYTHON_EXE setup.py test
