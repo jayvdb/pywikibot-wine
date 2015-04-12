@@ -10,6 +10,8 @@ before_install:
   - sudo apt-get install -y wine
   - wget 'http://www.python.org/ftp/python/3.3.5/python-3.3.5.msi'
   - wine msiexec /i python-3.3.5.msi /qn
+  - PYTHON_EXE=~/.wine/drive_c/Python33/python.exe
+  - ls -al $PYTHON_EXE
 
 install:
 # increase number of open files allowed for tests
@@ -24,7 +26,6 @@ install:
 
 - if [[ "$SITE_ONLY" == '1' ]]; then export USE_NOSE=1; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install unittest2==0.8.0; fi
-- pip install six
 - export GITHUB_USER=`echo $TRAVIS_REPO_SLUG | cut -d '/' -f 1`
 - mkdir ~/.pywikibot
 - mkdir ~/.python-eggs
@@ -56,7 +57,7 @@ install:
     echo "usernames['commons']['commons'] = '$PYWIKIBOT2_USERNAME'" >> ~/.pywikibot/user-config.py ;
     echo "('$PYWIKIBOT2_USERNAME', '$USER_PASSWORD')" > ~/.pywikibot/passwordfile ;
   fi
-- CC=${SYS_CC} CXX=${SYS_CXX} python setup.py install
+- $PYTHON_EXE setup.py install
 
 script:
 # Fix numpy ast errors in tests by upgrading numpy
